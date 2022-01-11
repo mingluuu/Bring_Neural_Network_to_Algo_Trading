@@ -51,7 +51,7 @@ Bollinger Bands (BB)
 
 Rate of Change (RC)
 
-## Generate Training Data
+## Part 3. Generate Training Data
 
 Run `main.py` to generate technical indicators for future training:
 
