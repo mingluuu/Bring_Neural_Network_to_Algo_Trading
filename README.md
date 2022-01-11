@@ -66,3 +66,51 @@ tickers = ['SPY']
 short_window = 5
 long_window = 15
 ```
+
+## Evaluate the indicators
+
+Set the following parameters for the indicators and used binary tree classification to evaluate the indicators.
+
+```
+short_window = 4
+long_window = 100
+```
+
+Set the first 3 months of data as training and the rest for testing. The results for each indicator is shown in the figure below (The indicators with higher Strategy Return is considered as better ones):
+
+
+Simple Moving Average (SMA)
+Strategy Return: 2.08
+<img src="plots/DTree_SMA_short4_long100_2.06_Plot.png" width="500"/>
+
+Simple Moving Average Volume (SMAV)
+Strategy Return 1.78
+<img src="plots/DTree_SMAV_short4_long100_1.78_Plot.png" width="500"/>
+
+Average True Range (ATR)
+Strategy Return 1.65
+<img src="plots/DTree_ATR_short4_long100_1.65_Plot.png" width="500"/>
+
+Average Directional Index (ADX)
+Strategy Return 1.5
+<img src="plots/DTree_ADX_short4_long100_1.5_Plot.png" width="500"/>
+
+Stochastic Oscillators (SO)
+Strategy Return 1.44
+<img src="plots/DTree_Stochastic_PD_short4_long100_1.44_Plot.png" width="500"/>
+
+Ralative Strength Index (RSI)
+Strategy Return 1.78
+<img src="plots/DTree_RSI_short4_long100_1.78_Plot.png" width="500"/>
+
+Moving Average Convergence Divergence (MACD)
+Strategy Return 1.64
+<img src="plots/DTree_MACD_short4_long100_1.64_Plot.png" width="500"/>
+
+Bollinger Bands (BB)
+Strategy Return 1.08
+<img src="plots/DTree_BB_short4_long100_1.08_Plot.png" width="500"/>
+
+Rate of Change (RC)
+Strategy Return 1.01
+<img src="plots/DTree_RC_short4_long100_1.01_Plot.png" width="500"/>
