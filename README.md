@@ -67,7 +67,7 @@ short_window = 5
 long_window = 15
 ```
 
-## Evaluate the indicators
+## Part 4. Evaluate the indicators
 
 Set the following parameters for the indicators and used binary tree classification to evaluate the indicators.
 
