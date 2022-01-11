@@ -76,7 +76,7 @@ short_window = 4
 long_window = 100
 ```
 
-Set the first 3 months of data as training and the rest for testing. The results for each indicator is shown in the figure below (The indicators with higher Strategy Return is considered as better ones):
+Set the first 3 months of data as training and the rest for testing. The results for each indicator is shown in the figure below (The indicators with higher Strategy Return is considered as better ones: SMA, SMAV, RSI, ATR, MACD):
 
 
 Simple Moving Average (SMA)
