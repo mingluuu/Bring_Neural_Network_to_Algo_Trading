@@ -1,5 +1,33 @@
 #importing variables
 import numpy as np
+from finta import TA
+
+def generate_indicators(data_df, indicator_proposals, short_window=5, long_window=10):
+    # Generate Inicators (Ref: https://towardsdatascience.com/building-a-comprehensive-set-of-technical-indicators-in-python-for-quantitative-trading-8d98751b5fb)
+    # generate SMA_s, SMA_l, SMA_ratio
+    add_indicator_SMA(data_df, indicator_proposals, short_window=short_window, long_window=long_window)
+    # generate SMAV_s, SMAV_l, SMAV_ratio
+    add_indicator_SMAV(data_df, indicator_proposals, short_window=short_window, long_window=long_window)
+    # generate ATR_s, ATR_l, ATR_ratio
+    add_indicator_ATR(data_df, indicator_proposals, short_window=short_window, long_window=long_window)
+    # generate ADX_s, ADX_l
+    add_indicator_ADX(data_df, indicator_proposals, short_window=short_window, long_window=long_window)
+    # generate Stochastic_PD_s, Stochastic_PD_l, Stochastic_ratio
+    add_indicator_STO(data_df, indicator_proposals, short_window=short_window, long_window=long_window)
+    # generate RSI_s, RSI_l, RSI_ratio
+    add_indicator_RSI(data_df, indicator_proposals, short_window=short_window, long_window=long_window)
+    # generate MACD
+    add_indicator_MACD(data_df, indicator_proposals, short_window=short_window, long_window=long_window)
+    # generate lowerband_s, upperband_s, lowerband_l, upperband_l
+    add_indicator_BB(data_df, indicator_proposals, short_window=short_window, long_window=long_window)
+    # generate RC_s, RC_l
+    add_indicator_RC(data_df, indicator_proposals, short_window=short_window, long_window=long_window)
+    
+    # Generate Additional Indicators suggested by the team
+    # AO, CMO, and ER using FinTA (Financial Technical Analysis)
+    add_indicator_AO(data_df, indicator_proposals)
+    add_indicator_CMO(data_df, indicator_proposals)
+    add_indicator_ER(data_df, indicator_proposals)
 
 def wilder_smooth(dataslice_df, periods):
     '''
@@ -22,35 +50,40 @@ def wilder_smooth(dataslice_df, periods):
     
     return Wilder
 
-def add_indicator_SMA(data_df, short_window=5, long_window=15):
+def add_indicator_SMA(data_df, indicator_proposals, short_window=5, long_window=15):
     '''
     Function to compute and add Simple Moving Average (SMA) as indicators into the input dataframe.
     Inputs:
-        data_df: a dataframe with stock information.
+        data_df: a dataframe with stock information, which indicators also add to it.
+        indicator_proposals: a list with proposed indicators' name.
         short_window: an int specify the SHORT term window, default set to 5 days.
         long_window: an int specify the LONG term window, default set to 15 days.
     '''
     data_df['SMA_s'] = data_df.groupby('symbol')['Close'].transform(lambda x: x.rolling(window=short_window).mean())
     data_df['SMA_l'] = data_df.groupby('symbol')['Close'].transform(lambda x: x.rolling(window=long_window).mean())
     data_df['SMA_ratio'] = data_df['SMA_s'] / data_df['SMA_l']
+    indicator_proposals.append(['SMA_s', 'SMA_l', 'SMA_ratio'])
     
-def add_indicator_SMAV(data_df, short_window=5, long_window=15):
+def add_indicator_SMAV(data_df, indicator_proposals, short_window=5, long_window=15):
     '''
     Function to compute and add Simple Moving Average Volume (SMAV) as indicators into the input dataframe.
     Inputs:
-        data_df: a dataframe with stock information.
+        data_df: a dataframe with stock information, which indicators also add to it.
+        indicator_proposals: a list with proposed indicators' name.
         short_window: an int specify the SHORT term window, default set to 5 days.
         long_window: an int specify the LONG term window, default set to 15 days.
     '''
     data_df['SMAV_s'] = data_df.groupby('symbol')['Volume'].transform(lambda x: x.rolling(window=short_window).mean())
     data_df['SMAV_l'] = data_df.groupby('symbol')['Volume'].transform(lambda x: x.rolling(window=long_window).mean())
     data_df['SMAV_ratio'] = data_df['SMAV_s'] / data_df['SMAV_l']
+    indicator_proposals.append(['SMAV_s', 'SMAV_l', 'SMAV_ratio'])
     
-def add_indicator_ATR(data_df, short_window=5, long_window=15):
+def add_indicator_ATR(data_df, indicator_proposals, short_window=5, long_window=15):
     '''
     Function to compute and add Average True Range (ATR) as indicators into the input dataframe.
     Inputs:
-        data_df: a dataframe with stock information.
+        data_df: a dataframe with stock information, which indicators also add to it.
+        indicator_proposals: a list with proposed indicators' name.
         short_window: an int specify the SHORT term window, default set to 5 days.
         long_window: an int specify the LONG term window, default set to 15 days.
     '''
@@ -64,12 +97,14 @@ def add_indicator_ATR(data_df, short_window=5, long_window=15):
         data_df.loc[data_df.symbol==i,'ATR_l'] = wilder_smooth(TR_data['TR'], long_window)
 
     data_df['ATR_ratio'] = data_df['ATR_s'] / data_df['ATR_l']
+    indicator_proposals.append(['ATR_s', 'ATR_l', 'ATR_ratio'])
     
-def add_indicator_ADX(data_df, short_window=5, long_window=15):
+def add_indicator_ADX(data_df, indicator_proposals, short_window=5, long_window=15):
     '''
     Function to compute and add Average Directional Index (ADX) as indicators into the input dataframe.
     Inputs:
-        data_df: a dataframe with stock information.
+        data_df: a dataframe with stock information, which indicators also add to it.
+        indicator_proposals: a list with proposed indicators' name.
         short_window: an int specify the SHORT term window, default set to 5 days.
         long_window: an int specify the LONG term window, default set to 15 days.
     '''
@@ -101,17 +136,19 @@ def add_indicator_ADX(data_df, short_window=5, long_window=15):
     data_df['DX_s'] = (np.round(abs(data_df['+DI_s'] - data_df['-DI_s'])/(data_df['+DI_s'] + data_df['-DI_s']) * 100))
 
     data_df['DX_l'] = (np.round(abs(data_df['+DI_l'] - data_df['-DI_l'])/(data_df['+DI_l'] + data_df['-DI_l']) * 100))
+    indicator_proposals.append(['DX_s', 'DX_l'])
 
     for i in data_df['symbol'].unique():
         ADX_data = data_df[data_df.symbol == i].copy()
         data_df.loc[data_df.symbol==i,'ADX_s'] = wilder_smooth(ADX_data['DX_s'], short_window)
         data_df.loc[data_df.symbol==i,'ADX_l'] = wilder_smooth(ADX_data['DX_l'], long_window)
         
-def add_indicator_STO(data_df, short_window=5, long_window=15):
+def add_indicator_STO(data_df, indicator_proposals, short_window=5, long_window=15):
     '''
     Function to compute and add Stochastic Oscillators (STO) as indicators into the input dataframe.
     Inputs:
-        data_df: a dataframe with stock information.
+        data_df: a dataframe with stock information, which indicators also add to it.
+        indicator_proposals: a list with proposed indicators' name.
         short_window: an int specify the SHORT term window, default set to 5 days.
         long_window: an int specify the LONG term window, default set to 15 days.
     '''
@@ -127,12 +164,14 @@ def add_indicator_STO(data_df, short_window=5, long_window=15):
     data_df['Stochastic_PD_l'] = data_df['Stochastic_l'].rolling(window=long_window).mean()
 
     data_df['Stochastic_ratio'] = data_df['Stochastic_PD_s']/data_df['Stochastic_PD_l']
+    indicator_proposals.append(['Stochastic_PD_s', 'Stochastic_PD_l', 'Stochastic_ratio'])
     
-def add_indicator_RSI(data_df, short_window=5, long_window=15):
+def add_indicator_RSI(data_df, indicator_proposals, short_window=5, long_window=15):
     '''
     Function to compute and add Relative Strength Index (RSI) as indicators into the input dataframe.
     Inputs:
-        data_df: a dataframe with stock information.
+        data_df: a dataframe with stock information, which indicators also add to it.
+        indicator_proposals: a list with proposed indicators' name.
         short_window: an int specify the SHORT term window, default set to 5 days.
         long_window: an int specify the LONG term window, default set to 15 days.
     '''
@@ -158,23 +197,28 @@ def add_indicator_RSI(data_df, short_window=5, long_window=15):
 
     data_df['RSI_ratio'] = data_df['RSI_s']/data_df['RSI_l']
     
-def add_indicator_MACD(data_df, short_window=5, long_window=15):
+    indicator_proposals.append(['RSI_s', 'RSI_l', 'RSI_ratio'])
+    
+def add_indicator_MACD(data_df, indicator_proposals, short_window=5, long_window=15):
     '''
     Function to compute and add Moving Average Convergence Divergence (MACD) as indicators into the input dataframe.
     Inputs:
-        data_df: a dataframe with stock information.
+        data_df: a dataframe with stock information, which indicators also add to it.
+        indicator_proposals: a list with proposed indicators' name.
         short_window: an int specify the SHORT term window, default set to 5 days.
         long_window: an int specify the LONG term window, default set to 15 days.
     '''
     data_df['Ewm_s'] = data_df.groupby('symbol')['Close'].transform(lambda x: x.ewm(span=short_window, adjust=False).mean())
     data_df['Ewm_l'] = data_df.groupby('symbol')['Close'].transform(lambda x: x.ewm(span=long_window, adjust=False).mean())
     data_df['MACD'] = data_df['Ewm_l'] - data_df['Ewm_s']
+    indicator_proposals.append(['MACD'])
     
-def add_indicator_BB(data_df, short_window=5, long_window=15):
+def add_indicator_BB(data_df, indicator_proposals, short_window=5, long_window=15):
     '''
     Function to compute and add Bollinger Bands (BB) as indicators into the input dataframe.
     Inputs:
-        data_df: a dataframe with stock information.
+        data_df: a dataframe with stock information, which indicators also add to it.
+        indicator_proposals: a list with proposed indicators' name.
         short_window: an int specify the SHORT term window, default set to 5 days.
         long_window: an int specify the LONG term window, default set to 15 days.
     '''
@@ -189,14 +233,51 @@ def add_indicator_BB(data_df, short_window=5, long_window=15):
     
     data_df['lowerband_l'] = data_df['MA_l'] - 2*data_df['SD_l']
     data_df['upperband_l'] = data_df['MA_l'] + 2*data_df['SD_l']
+    indicator_proposals.append(['lowerband_s', 'upperband_s', 'lowerband_l', 'upperband_l'])
     
-def add_indicator_RC(data_df, short_window=5, long_window=15):
+def add_indicator_RC(data_df, indicator_proposals, short_window=5, long_window=15):
     '''
     Function to compute and add Rate of Change (RC) as indicators into the input dataframe.
     Inputs:
-        data_df: a dataframe with stock information.
-        short_window: an int specify the SHORT term window, default set to 5 days.
-        long_window: an int specify the LONG term window, default set to 15 days.
+        data_df: a dataframe with stock information, which indicators also add to it.
+        indicator_proposals: a list with proposed indicators' name.
     '''
     data_df['RC_s'] = data_df.groupby('symbol')['Close'].transform(lambda x: x.pct_change(periods=short_window))
     data_df['RC_l'] = data_df.groupby('symbol')['Close'].transform(lambda x: x.pct_change(periods=long_window))
+    indicator_proposals.append(['RC_s', 'RC_l'])
+    
+def add_indicator_AO(data_df, indicator_proposals, short_window=5, long_window=15):
+    '''
+    Function to compute and add Awesome Oscillator (AO) as indicators into the input dataframe.
+    Inputs:
+        data_df: a dataframe with stock information, which indicators also add to it.
+        indicator_proposals: a list with proposed indicators' name.
+        short_window: dummy
+        long_window: dummy
+    '''
+    data_df['AO'] = TA.AO(data_df)
+    indicator_proposals.append(['AO'])
+    
+def add_indicator_CMO(data_df, indicator_proposals, short_window=5, long_window=15):
+    '''
+    Function to compute and add Chande Momentum Oscillator (CMO) as indicators into the input dataframe.
+    Inputs:
+        data_df: a dataframe with stock information, which indicators also add to it.
+        indicator_proposals: a list with proposed indicators' name.
+        short_window: dummy
+        long_window: dummy
+    '''
+    data_df['CMO'] = TA.CMO(data_df)
+    indicator_proposals.append(['CMO'])
+    
+def add_indicator_ER(data_df, indicator_proposals, short_window=5, long_window=15):
+    '''
+    Function to compute and add Kaufman Efficiency Indicator (ER) as indicators into the input dataframe.
+    Inputs:
+        data_df: a dataframe with stock information, which indicators also add to it.
+        indicator_proposals: a list with proposed indicators' name.
+        short_window: dummy
+        long_window: dummy
+    '''
+    data_df['ER'] = TA.ER(data_df)
+    indicator_proposals.append(['ER'])
