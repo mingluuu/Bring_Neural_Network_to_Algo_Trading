@@ -75,33 +75,10 @@ We iterate through different window combinations of short window and long window
 - short window in range [2:14], with interval of 1
 - long window in range [17:210], with interval of 7
 
+According to our analysis, the best config is `short_window=9` and `long_window=70`.
 
-Set the first 3 months of data as training and the rest for testing. The results for each indicator is shown in the figure below (The indicators with higher Strategy Return is considered as better ones: Stochastic Oscillators, RSI, CMO, BB, ADX, SMA):
 
-
-Simple Moving Average (SMA)
-
-Strategy Return: 1.7
-
-<img src="plots/DTree_SMA_s_short9_long70_1.7_Plot.png" width="700"/>
-
-Simple Moving Average Volume (SMAV)
-
-Strategy Return 1.41
-
-<img src="plots/DTree_SMAV_s_short9_long70_1.41_Plot.png" width="500"/>
-
-Average True Range (ATR)
-
-Strategy Return 1.26
-
-<img src="plots/DTree_ATR_s_short9_long70_1.26_Plot.png" width="500"/>
-
-Average Directional Index (ADX)
-
-Strategy Return 1.76
-
-<img src="plots/DTree_DX_s_short9_long70_1.76_Plot.png" width="500"/>
+Set the first 3 months of data as training and the rest for testing. The results for each indicator is shown in the figure below (The indicators with higher Strategy Return is considered as better ones: Stochastic Oscillators, RSI, CMO, BB, ADX, SMA, ER, RC):
 
 Stochastic Oscillators (SO)
 
@@ -115,17 +92,35 @@ Strategy Return 2.34
 
 <img src="plots/DTree_RSI_s_short9_long70_2.34_Plot.png" width="500"/>
 
-Moving Average Convergence Divergence (MACD)
+Chande Momentum Oscillator (CMO)
 
-Strategy Return 0.97
+Strategy Return 2.14
 
-<img src="plots/DTree_MACD_short9_long70_0.97_Plot.png" width="500"/>
+<img src="plots/DTree_CMO_short9_long70_2.14_Plot.png" width="500"/>
 
 Bollinger Bands (BB)
 
 Strategy Return 1.84
 
 <img src="plots/DTree_lowerband_s_short9_long70_1.84_Plot.png" width="500"/>
+
+Average Directional Index (ADX)
+
+Strategy Return 1.76
+
+<img src="plots/DTree_DX_s_short9_long70_1.76_Plot.png" width="500"/>
+
+Simple Moving Average (SMA)
+
+Strategy Return: 1.7
+
+<img src="plots/DTree_SMA_s_short9_long70_1.7_Plot.png" width="500"/>
+
+Kaufman Efficiency Indicator (ER)
+
+Strategy Return 1.65
+
+<img src="plots/DTree_ER_short9_long70_1.65_Plot.png" width="500"/>
 
 Rate of Change (RC)
 
@@ -139,14 +134,20 @@ Strategy Return 1.42
 
 <img src="plots/DTree_AO_short9_long70_1.42_Plot.png" width="500"/>
 
-Chande Momentum Oscillator (CMO)
+Simple Moving Average Volume (SMAV)
 
-Strategy Return 2.14
+Strategy Return 1.41
 
-<img src="plots/DTree_CMO_short9_long70_2.14_Plot.png" width="500"/>
+<img src="plots/DTree_SMAV_s_short9_long70_1.41_Plot.png" width="500"/>
 
-Kaufman Efficiency Indicator (ER)
+Average True Range (ATR)
 
-Strategy Return 1.65
+Strategy Return 1.26
 
-<img src="plots/DTree_ER_short9_long70_1.65_Plot.png" width="500"/>
+<img src="plots/DTree_ATR_s_short9_long70_1.26_Plot.png" width="500"/>
+
+Moving Average Convergence Divergence (MACD)
+
+Strategy Return 0.97
+
+<img src="plots/DTree_MACD_short9_long70_0.97_Plot.png" width="500"/>
