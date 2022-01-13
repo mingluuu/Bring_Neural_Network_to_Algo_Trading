@@ -1,0 +1,24 @@
+Financial Indicators:
+
+Main Model: Varieties of Categorical Technical Indicators
+
+Categories
+ 
+Trends: SMA, SSMA, EMA, DEMA, TEMA, TRIMA, ADX (May remove some of the averages indicators)
+Volatility: ATR, Bollinger Bands, VIX, MSD
+Momentum: RSI, CCI, MACD, ROC, Stochastics Oscillator
+
+
+Steps:
+
+Evaluate the technical indicators and standardize.
+Begin applying technical indicators to nn and determine which model best predicts the
+daily return/trading signal.
+Develop trading algorithm based on the best performing technical indicator.
+
+
+Things to keep in mind:
+
+Determine if timeframe is an influencing factor in the success of the algorithm. (Perhaps average out the approximate period of each trend and use that as a timeframe)
+Trinary Classification-> Buying, Holding, Selling to determine which trades are optimal to make.
+Assign weights of technical indicator to each stock -> meaning we need to customize the model for each stock.
