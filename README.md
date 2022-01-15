@@ -33,17 +33,20 @@ Minglu Li**
 ![alt text](https://github.com/Z1WenChen/Project_2/blob/main/Files/Backtesting.png)
 
 
+
+
+
 *3) Selection of Momentum and Non-Momentum sets:*
 
 *Momentum set:*
 
-*1) Relative Strength Index “RSI”*
+*1. Relative Strength Index “RSI”*
 
-*2) Commodity Channel Index “CCI”*
+*2. Commodity Channel Index “CCI”*
 
-*3) Rate-of-change “ROC”*
+*3. Rate-of-change “ROC”*
 
-*4)Stochastic Oscillator %K “STOCH”*
+*4. Stochastic Oscillator %K “STOCH”*
 
 
 
@@ -113,6 +116,14 @@ loss function = “categorical_crossentropy”*
 
 *Please review the codes "Project_2_Trend_Indicators.ipynb" and "momentum_indicators.ipynb" for results*
 
+![alt text](https://github.com/Z1WenChen/Project_2/blob/main/Files/momxtrain.png)
+
+![alt text](https://github.com/Z1WenChen/Project_2/blob/main/Files/nonmomxtrain.png)
+
+![alt text](https://github.com/Z1WenChen/Project_2/blob/main/Files/momxtest.png)
+
+![alt text](https://github.com/Z1WenChen/Project_2/blob/main/Files/nonmomxtest.png)
+
 *Finding: The Momentum indicators, with both lower Loss and MSE, outperformed the Non-momentum indicators*
 
 
@@ -134,6 +145,14 @@ loss function = “categorical_crossentropy”*
 
 *Please review the codes "Project_2_Trend_Indicators_SVC_test.ipynb" and "SVC_Momentum_Test.ipynb" for results*
 
+![alt text](https://github.com/Z1WenChen/Project_2/blob/main/Files/momyresample.png)
+
+![alt text](https://github.com/Z1WenChen/Project_2/blob/main/Files/nonmomyresample.png)
+
+![alt text](https://github.com/Z1WenChen/Project_2/blob/main/Files/momytest.png)
+
+![alt text](https://github.com/Z1WenChen/Project_2/blob/main/Files/nonmomytest.png)
+
 *Finding 1: Through running SVC model, non-momentum and momentum models yield close results; but overall, non-momentum outperformed momentum set*
 
 *Finding 2: Through running SVC model, non-momentum outperformed momentum set in algorithm return; but both sets underperformed than the actual return*
@@ -150,6 +169,8 @@ loss function = “categorical_crossentropy”*
 ------------------------------------------------------------------------------------------------------------
 
 **Summary**
+
+![alt text](https://github.com/Z1WenChen/Project_2/blob/main/Files/summary.png)
 
 **1) Momentum indicators outperform non-momentum in neural network with lower loss and mse, so momentum indicators might have more “explaining power” to trading signals**
 
@@ -169,5 +190,13 @@ loss function = “categorical_crossentropy”*
 
 *4) Apply the method into different sectors and stocks/ETFs*
 
+------------------------------------------------------------------------------------------------------------
+
+
+**Comments**
+
+*Comment 1: Use Long-Short Term Memory from Keras (LSTM) to make the model move from local minimum*
+
+*Comment 2: 1% Commission might be the reason causing the algo returns underperforming, but it mimics the real world.*
 
 
