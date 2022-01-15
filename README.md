@@ -116,12 +116,16 @@ loss function = “categorical_crossentropy”*
 
 *Please review the codes "Project_2_Trend_Indicators.ipynb" and "momentum_indicators.ipynb" for results*
 
+**Momentum X_train:**
 ![alt text](https://github.com/Z1WenChen/Project_2/blob/main/Files/momxtrain.png)
 
+**Non-Momentum X_train:**
 ![alt text](https://github.com/Z1WenChen/Project_2/blob/main/Files/nonmomxtrain.png)
 
+**Momentum X_test:**
 ![alt text](https://github.com/Z1WenChen/Project_2/blob/main/Files/momxtest.png)
 
+**Non-Momentum X_test:**
 ![alt text](https://github.com/Z1WenChen/Project_2/blob/main/Files/nonmomxtest.png)
 
 *Finding: The Momentum indicators, with both lower Loss and MSE, outperformed the Non-momentum indicators*
@@ -145,12 +149,16 @@ loss function = “categorical_crossentropy”*
 
 *Please review the codes "Project_2_Trend_Indicators_SVC_test.ipynb" and "SVC_Momentum_Test.ipynb" for results*
 
+**Momentum y_resampled:**
 ![alt text](https://github.com/Z1WenChen/Project_2/blob/main/Files/momyresample.png)
 
+**Non-Momentum y_resampled:**
 ![alt text](https://github.com/Z1WenChen/Project_2/blob/main/Files/nonmomyresample.png)
 
+**Momentum y_test:**
 ![alt text](https://github.com/Z1WenChen/Project_2/blob/main/Files/momytest.png)
 
+**Non-Momentum y_test:**
 ![alt text](https://github.com/Z1WenChen/Project_2/blob/main/Files/nonmomytest.png)
 
 *Finding 1: Through running SVC model, non-momentum and momentum models yield close results; but overall, non-momentum outperformed momentum set*
