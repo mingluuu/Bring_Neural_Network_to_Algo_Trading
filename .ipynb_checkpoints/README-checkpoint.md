@@ -32,6 +32,33 @@ Minglu Li**
 
 ![alt text](https://github.com/Z1WenChen/Project_2/blob/main/Files/Backtesting.png)
 
+
+*3) Selection of Momentum and Non-Momentum sets:*
+
+*Momentum set:*
+
+*1) Relative Strength Index “RSI”*
+
+*2) Commodity Channel Index “CCI”*
+
+*3) Rate-of-change “ROC”*
+
+*4)Stochastic Oscillator %K “STOCH”*
+
+
+
+*Non-Momentum set:*
+
+*1) Volume Weighted Average Price “VWAP”*
+
+*2) Exponential Moving Average “EMA” (9, 70)*
+
+*3) Bollinger Bands “BBANDS”*
+
+*4) Elder’s Force Index “EFI”*
+
+
+
 ------------------------------------------------------------------------------------------------------------
 
 **Data Preparation**
@@ -56,24 +83,91 @@ loss function = “categorical_crossentropy”*
 
 
 *But we met recurrent neural network input problems caused by*
+
 *1)  indicators are littlely changed in numbers*
+
 *2)  indicators are too many and too complicated*
 
-![alt text](https://github.com/Z1WenChen/Project_2/blob/main/Files/Data%20Prep.png)
-![alt text](https://github.com/Z1WenChen/Project_2/blob/main/Files/Data%20Prep.png)
+![alt text](https://github.com/Z1WenChen/Project_2/blob/main/Files/Neural%20Network%20Deadend.png)
+![alt text](https://github.com/Z1WenChen/Project_2/blob/main/Files/Neural%20Network%20Deadend%20-2.png)
 
 
 **Solution:**
+
 *1) Only select 4 indicators for momentum and non-momentum set respectively*
+
 *2) Encode the indicators and create categorical variables to make indicators more “significant” to the signal and train scaled Xs*
+
 *3) Activation function change to “elu” for hidden layers to produce negative output*
+
 *4) Activation function change to “linear” for the output layer*
+
 *5) Loss function change to “mse”*
+
 *6) Metrics change to “mse”*
 
+![alt text](https://github.com/Z1WenChen/Project_2/blob/main/Files/nnmodel.png)
 
+
+**Results:**
+
+*Please review the codes "Project_2_Trend_Indicators.ipynb" and "momentum_indicators.ipynb" for results*
+
+*Finding: The Momentum indicators, with both lower Loss and MSE, outperformed the Non-momentum indicators*
 
 
 ------------------------------------------------------------------------------------------------------------
+
+**Part 2**
+
+*Then, we apply momentum and non-momentum set into SVC classifier model and backtest the algo return vs actual return*
+
+*1) 3 Months Training Period*
+
+*2) Standard Scaler*
+
+*3) RandomOverSampler to resample as ramdom_state=1*
+
+
+
+**Results:**
+
+*Please review the codes "Project_2_Trend_Indicators_SVC_test.ipynb" and "SVC_Momentum_Test.ipynb" for results*
+
+*Finding 1: Through running SVC model, non-momentum and momentum models yield close results; but overall, non-momentum outperformed momentum set*
+
+*Finding 2: Through running SVC model, non-momentum outperformed momentum set in algorithm return; but both sets underperformed than the actual return*
+
+**Momentum:**
+
+![alt text](https://github.com/Z1WenChen/Project_2/blob/main/Files/momreturn.png)
+
+**Non-Momentum:**
+
+![alt text](https://github.com/Z1WenChen/Project_2/blob/main/Files/nonmomreturn.png)
+
+
+------------------------------------------------------------------------------------------------------------
+
+**Summary**
+
+**1) Momentum indicators outperform non-momentum in neural network with lower loss and mse, so momentum indicators might have more “explaining power” to trading signals**
+
+**2) Non-momentum indicators outperform momentum in machine learning backtesting with higher f1-score and algorithm returns, so non-momentum indicators might have higher “applicable score” to trading signals**
+
+**3) The algorithm trading returns from both sets are underperformed than the actual returns, so generally speaking, applying technical indicators into algorithm trading is still ambiguous**
+
+------------------------------------------------------------------------------------------------------------
+
+**Next Steps**
+
+*1) Test more indicators in Algo trading*
+
+*2) Run ML-backtesting to each technical indicator*
+
+*3) Optimize our model by testing more Classifiers (eg. Logistic_Regression)*
+
+*4) Apply the method into different sectors and stocks/ETFs*
+
 
 
