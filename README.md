@@ -26,11 +26,11 @@ Minglu Li**
 *1) Apply sequential model to study momentum and Non-momentum technical indicators with the signal, and compare the results from these two models to identify which set outperforms in terms of loss and accuracy*
 
 
-![alt text](https://github.com/Z1WenChen/Project_2/blob/main/Deep%20Learning.png)
+![alt text](https://github.com/Z1WenChen/Project_2/blob/main/Files/Deep%20Learning.png)
 
 *2) Using SVC classifier model to backtest the algo trading returns from momentum and Non-momentum indicators to demonstrate which set is more “accurate” and “profitable”.*
 
-![alt text](https://github.com/Z1WenChen/Project_2/blob/main/Backtesting.png)
+![alt text](https://github.com/Z1WenChen/Project_2/blob/main/Files/Backtesting.png)
 
 ------------------------------------------------------------------------------------------------------------
 
@@ -46,6 +46,8 @@ Minglu Li**
 activation = “softmax”, 
 loss function = “categorical_crossentropy”*
 
+![alt text](https://github.com/Z1WenChen/Project_2/blob/main/Files/Data%20Prep.png)
+
 ------------------------------------------------------------------------------------------------------------
 
 **Part 1**
@@ -56,6 +58,10 @@ loss function = “categorical_crossentropy”*
 *But we met recurrent neural network input problems caused by*
 *1)  indicators are littlely changed in numbers*
 *2)  indicators are too many and too complicated*
+
+![alt text](https://github.com/Z1WenChen/Project_2/blob/main/Files/Data%20Prep.png)
+![alt text](https://github.com/Z1WenChen/Project_2/blob/main/Files/Data%20Prep.png)
+
 
 **Solution:**
 *1) Only select 4 indicators for momentum and non-momentum set respectively*
