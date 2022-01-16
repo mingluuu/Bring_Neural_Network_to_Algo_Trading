@@ -114,7 +114,7 @@ loss function = “categorical_crossentropy”*
 
 **Results:**
 
-*Please review the codes "Project_2_Trend_Indicators.ipynb" and "momentum_indicators.ipynb" for results*
+*Please review the codes "Trend_Indicators.ipynb" and "momentum_indicators.ipynb" for results*
 
 **Momentum X_train:**
 ![alt text](https://github.com/Z1WenChen/Project_2/blob/main/Files/momxtrain.png)
@@ -147,7 +147,7 @@ loss function = “categorical_crossentropy”*
 
 **Results:**
 
-*Please review the codes "Project_2_Trend_Indicators_SVC_test.ipynb" and "SVC_Momentum_Test.ipynb" for results*
+*Please review the codes "Trend_Indicators_SVC_test.ipynb" and "SVC_Momentum_Test.ipynb" for results*
 
 **Momentum y_resampled:**
 ![alt text](https://github.com/Z1WenChen/Project_2/blob/main/Files/momyresample.png)
