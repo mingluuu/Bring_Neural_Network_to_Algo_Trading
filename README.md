@@ -1,11 +1,5 @@
 # *Bring Neural Network to Algo Trading Report* 
 ---
-**Team members: 
-Ziwen Chen,
-Andy He, 
-Shasha Li, 
-Minglu Li**
-
 ------------------------------------------------------------------------------------------------------------
 
 
@@ -207,4 +201,8 @@ loss function = “categorical_crossentropy”*
 
 *Comment 2: 1% Commission might be the reason causing the algo returns underperforming, but it mimics the real world.*
 
-
+**Contributers**
+Ken Lee,
+Rabia Talib,
+Albert Peyton,
+Minglu Li
