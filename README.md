@@ -1,7 +1,5 @@
 # *Bring Neural Network to Algo Trading Report* 
-
 ------------------------------------------------------------------------------------------------------------
-
 
 **Purpose of the Project**
 
@@ -203,7 +201,8 @@ loss function = “categorical_crossentropy”*
 ------------------------------------------------------------------------------------------------------------
 
 **Contributers**
-Minglu (Amber) Li,
+
+*Minglu (Amber) Li,
 Ziwen Chen,
 Shasha Li,
-Andy He
+Andy He*
