@@ -1,4 +1,4 @@
-# *Project 2 Team 6: Bring Neural Network to Algo Trading Report* 
+# *Bring Neural Network to Algo Trading Report* 
 ---
 **Team members: 
 Ziwen Chen,
