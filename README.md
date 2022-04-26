@@ -1,5 +1,5 @@
 # *Bring Neural Network to Algo Trading Report* 
----
+
 ------------------------------------------------------------------------------------------------------------
 
 
@@ -194,15 +194,16 @@ loss function = “categorical_crossentropy”*
 
 ------------------------------------------------------------------------------------------------------------
 
-
 **Comments**
 
 *Comment 1: Use Long-Short Term Memory from Keras (LSTM) to make the model move from local minimum*
 
 *Comment 2: 1% Commission might be the reason causing the algo returns underperforming, but it mimics the real world.*
 
+------------------------------------------------------------------------------------------------------------
+
 **Contributers**
-Ken Lee,
-Rabia Talib,
-Albert Peyton,
-Minglu Li
+Minglu (Amber) Li,
+Ziwen Chen,
+Shasha Li,
+Andy He
